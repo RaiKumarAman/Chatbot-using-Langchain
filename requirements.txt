@@ -1,0 +1,6 @@
+langchain
+faiss-cpu
+flask
+flask-restful
+sentence-transformers
+playwright
