@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chatbot - Course Finder</title>
+    <style>
+        body { font-family: Arial, sans-serif; background-color: #f4f4f4; text-align: center; }
+        .chat-container { width: 50%; margin: auto; background: white; padding: 20px; border-radius: 10px; box-shadow: 0 0 10px #ccc; margin-top: 30px; }
+        .chat-box { height: 400px; overflow-y: auto; border: 1px solid #ddd; padding: 10px; margin-bottom: 10px; background: #fff; text-align: left; }
+        .user-message { background: #007bff; color: white; padding: 8px; border-radius: 5px; margin: 5px 0; width: fit-content; max-width: 80%; }
+        .bot-message { background: #ddd; padding: 8px; border-radius: 5px; margin: 5px 0; width: fit-content; max-width: 80%; }
+        .input-container { display: flex; }
+        input { flex: 1; padding: 10px; border: 1px solid #ddd; border-radius: 5px; }
+        button { padding: 10px; margin-left: 10px; cursor: pointer; background: #007bff; color: white; border: none; border-radius: 5px; }
+    </style>
+</head>
+<body>
+    <h2>Chatbot - Course Finder</h2>
+    <div class="chat-container">
+        <div class="chat-box" id="chat-box">
+            <div class="bot-message">Hello! I’m here to help you find the best courses. Ask me anything! 😊</div>
+        </div>
+        <div class="input-container">
+            <input type="text" id="query-input" placeholder="Type your query..." onkeypress="handleKeyPress(event)">
+            <button onclick="sendQuery()">Send</button>
+        </div>
+    </div>
+
+    <script>
+        function handleKeyPress(event) {
+            if (event.key === "Enter") {
+                sendQuery();
+            }
+        }
+
+        function sendQuery() {
+            let query = document.getElementById("query-input").value.trim();
+            if (query === "") return;
+
+            // Append user message to chat
+            let chatBox = document.getElementById("chat-box");
+            chatBox.innerHTML += `<div class="user-message">${query}</div>`;
+            document.getElementById("query-input").value = "";
+
+            fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ query: query })
+            })
+            .then(response => response.json())
+            .then(data => {
+                if (data.response.length > 0) {
+                    data.response.forEach(response => {
+                        chatBox.innerHTML += `
+                            <div class="bot-message">${response.text || `
+                                <b>Course:</b> ${response.course_name || "N/A"}<br>
+                                <b>Lessons:</b> ${response.lesson_count || "N/A"}<br>
+                                <b>Price:</b> ${response.price_per_session || "N/A"}<br>
+                                <b>Description:</b> ${response.description || "N/A"}
+                            `}</div>
+                        `;
+                    });
+                } else {
+                    chatBox.innerHTML += `<div class="bot-message">Sorry, I couldn't find any matching courses. 😞</div>`;
+                }
+                chatBox.scrollTop = chatBox.scrollHeight; // Auto-scroll
+            })
+            .catch(error => {
+                console.error("Error:", error);
+                chatBox.innerHTML += `<div class="bot-message">Oops! Something went wrong. Try again. 😕</div>`;
+            });
+        }
+    </script>
+</body>
+</html>
