@@ -1,0 +1,56 @@
+[
+    {
+        "course_name": "LEARN SCRATCH PROGRAMING",
+        "lesson_count": "16 Lessons",
+        "price_per_session": "$30",
+        "description": "Scratch Course is the foundation of coding and is a building block of a coding journey. If you want"
+    },
+    {
+        "course_name": "LEARN CLOUD COMPUTING BASICS-AWS",
+        "lesson_count": "20 Lessons",
+        "price_per_session": "$30",
+        "description": "In this course we are going to cover the basics and the most important services on AWS,\nAt the end"
+    },
+    {
+        "course_name": "LEARN PYTHON PROGRAMMING",
+        "lesson_count": "16 Lessons",
+        "price_per_session": "$30",
+        "description": "Python is a general-purpose, versatile, and powerful programming language. It’s a great first languanguage"
+    },
+    {
+        "course_name": "LEARN MOBILE DEVELOPMENT",
+        "lesson_count": "24 Lessons",
+        "price_per_session": "$30",
+        "description": "Mobile application development is the process of creating software applications that run on a mobil"
+    },
+    {
+        "course_name": "LEARN CORE JAVA PROGRAMMING ONLINE",
+        "lesson_count": "41 Lessons",
+        "price_per_session": "$30",
+        "description": "Java is a very popular high-level, class-based, object-oriented programming language that is design"
+    },
+    {
+        "course_name": "LEARN ROBOTICS",
+        "lesson_count": "25 Lessons",
+        "price_per_session": "$30",
+        "description": "You can open all kinds of doors for advancement in so many careers with a basic understanding of el"
+    },
+    {
+        "course_name": "LEARN JAVASCRIPT",
+        "lesson_count": "18 Lessons",
+        "price_per_session": "$30",
+        "description": "JavaScript is the most popular programming language in the world. It powers the entire modern web."
+    },
+    {
+        "course_name": "LEARN NODE JS",
+        "lesson_count": "18 Lessons",
+        "price_per_session": "$35",
+        "description": "Node.js developers are in high demand and the language is used for everything from traditional web"
+    },
+    {
+        "course_name": "LEARN CLOUD COMPUTING ADVANCE-AWSDESCRIPTION",
+        "lesson_count": "18 Lessons",
+        "price_per_session": "$30",
+        "description": "This introduction to cloud computing on Amazon AWS course takes you from the AWS Ad"
+    }
+]
